@@ -1,5 +1,0 @@
-- include: playbooks/base.yml
-- include: playbooks/clojure.yml
-- include: playbooks/fsharp.yml
-- include: playbooks/elixir.yml
-- include: playbooks/app.yml

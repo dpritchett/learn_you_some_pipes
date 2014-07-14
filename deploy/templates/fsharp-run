@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-HASHED=`head -100 /dev/urandom | md5sum | tr -d [:blank:]`
-FILENAME=/tmp/fsharp-script-$HASHED.fsx
-tail -n +2 $@ | sed '/^\s*$/d' | sed '/^#!/d' > $FILENAME
-
-fsharpi $FILENAME
