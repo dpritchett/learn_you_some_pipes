@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# generate a temp file name with a random number in it
+HASHED=`head -100 /dev/urandom | md5sum | tr -d [:blank:]`
+FILENAME=/tmp/clj-script-$HASHED.clj
+
+# strip blank lines, strip the #!/ leading line, write to a temp file
+tail -n +2 $@ | sed '/^\s*$/d' | sed '/^#!/d' > $FILENAME
+
+# run
+java -cp /opt/clojure/clojure-1.6.0.jar clojure.main $FILENAME

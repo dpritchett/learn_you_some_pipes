@@ -8,10 +8,37 @@ Coroutine
 http://blog.dpritchett.net
 @dpritchett
 
-* Bash
-[[http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-4.html][|]] is the pipe operator
+* What's a pipe?
+_In_software_engineering,_a_pipeline_consists_of_a_chain_of_processing_elements_(processes,_threads,_coroutines,_etc.),_arranged_so_that_the_output_of_each_element_is_the_input_of_the_next;_the_name_is_by_analogy_to_a_physical_pipeline._Usually_some_amount_of_buffering_is_provided_between_consecutive_elements._
 
-.play bash/examples/words.sh
+_The_information_that_flows_in_these_pipelines_is_often_a_stream_of_records,_bytes_or_bits,_and_the_elements_of_a_pipeline_may_be_called_filters;_this_is_also_called_the_pipes_and_filters_design_pattern._Connecting_elements_into_a_pipeline_is_analogous_to_function_composition._
+-[[http://en.wikipedia.org/wiki/Pipeline_(software)][Wikipedia]]
+
+* What's that look like?
+.image http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pipeline.svg/500px-Pipeline.svg.png
+
+* Why would I pipe and stream things?
+- Disk I/O is dramatically slower than in-memory operations
+- Tiny commands can be strung together easily for one-off tasks
+
+Real world example:
+4 gigabyte, multimillion-line tab separated database dump blew up.  Stacktrace includes the word "canary".  What can we do?
+
+.code bash/examples/canary.sh /START OMIT/,/END OMIT/
+
+* bash
+[[http://tldp.org/howto/bash-prog-intro-howto-4.html][|]] is the pipe operator
+
+.play bash/examples/words01.sh
+.play bash/examples/words02.sh
+.play bash/examples/words03.sh
+
+* Pipes helped build this presentation
+- Live code examples are sent from the browser to the server via a websocket
+- The code arrives on the other end all jumbled up
+- Not all languages like accepting input from STDIN
+
+.code bash/examples/clj-run
 
 * F#
 [[http://msdn.microsoft.com/en-us/library/dd233229.aspx][|>]] is the pipe operator
@@ -27,3 +54,8 @@ http://blog.dpritchett.net
 [[http://clojuredocs.org/clojure_core/clojure.core/->][-> and ->>]] are threading macros
 
 .play clojure/examples/hello_world.clj
+
+* See also
+
+*Ruby*: [[http://www.ruby-doc.org/core-2.1.2/Enumerator.html][Enumerators]]
+*Python*: [[http://www.dabeaz.com/generators/][Generators]] <- don't miss this slide deck by @dabeaz
